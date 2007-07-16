@@ -14,6 +14,7 @@ Group: Games/Arcade
 Url: http://openarena.ws/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch: noarch
+Conflicts: openarena < 0.7.0-3mdv2008.0
 
 %description
 OpenArena is an open-source content package for Quake III Arena
