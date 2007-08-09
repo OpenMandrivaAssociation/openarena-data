@@ -1,14 +1,25 @@
 %define gamename openarena
 %define name %{gamename}-data
-%define version 0.7.0
-%define release %mkrel 2
-%define oversion %(echo %{version} | sed -e 's/\\.//g')
+%define rversion 0.7
+%define patchlevel 1
+%define release %mkrel 1
+
+%define baseversion %{rversion}.0
+%define bversion %(echo %{baseversion} | sed -e 's/\\.//g')
+%if %{patchlevel}
+%define patchversion %{rversion}.%{patchlevel}
+%define pversion %(echo %{patchversion} | sed -e 's/\\.//g')
+%endif
+%define version %{?patchversion}%{!?patchversion:%{baseversion}}
 
 Summary: An open-source content package for Quake III Arena
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: http://openarena.ws/rel/%{oversion}/oa%{oversion}.zip
+Source0: http://openarena.ws/rel/%{bversion}/oa%{bversion}.zip
+%if %{patchlevel}
+Source1: oa%{pversion}-patch.zip
+%endif
 License: Creative Commons
 Group: Games/Arcade
 Url: http://openarena.ws/
@@ -24,8 +35,11 @@ game. You do not need Quake III Arena to play this game.
 This package contains data files for OpenArena.
 
 %prep
-%setup -q -n %{gamename}-%{version}
+%setup -q -n %{gamename}-%{baseversion}
 chmod 644 CHANGES CREDITS README
+%if %{patchlevel}
+yes | unzip -qq -d .. %{SOURCE1}
+%endif
 
 %build
 
