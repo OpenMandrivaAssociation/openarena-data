@@ -2,7 +2,7 @@
 %define name %{gamename}-data
 %define rversion 0.7
 %define patchlevel 1
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define baseversion %{rversion}.0
 %define bversion %(echo %{baseversion} | sed -e 's/\\.//g')
@@ -25,7 +25,7 @@ Group: Games/Arcade
 Url: http://openarena.ws/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch: noarch
-Conflicts: openarena < 0.7.0-3mdv2008.0
+Conflicts: openarena <= 0.7.0-2%{distsuffix}%{mandriva_release}
 
 %description
 OpenArena is an open-source content package for Quake III Arena
