@@ -2,7 +2,7 @@
 %define name %{gamename}-data
 %define rversion 0.7
 %define patchlevel 1
-%define release %mkrel 2
+%define release %mkrel 3
 
 %define baseversion %{rversion}.0
 %define bversion %(echo %{baseversion} | sed -e 's/\\.//g')
