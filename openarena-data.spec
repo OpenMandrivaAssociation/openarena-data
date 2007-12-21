@@ -23,6 +23,7 @@ Source1: oa%{pversion}-patch.zip
 License: Creative Commons
 Group: Games/Arcade
 Url: http://openarena.ws/
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch: noarch
 Conflicts: openarena <= 0.7.0-2%{distsuffix}%{mandriva_release}
 
