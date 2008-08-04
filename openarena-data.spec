@@ -3,7 +3,7 @@
 %define rversion 0.7
 %define baseversion %{rversion}.6
 %define patchlevel 7
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define bversion %(echo %{baseversion} | sed -e 's/\\.//g')
 %if %{patchlevel}
