@@ -1,9 +1,9 @@
 %define gamename openarena
 %define name %{gamename}-data
-%define rversion 0.7
-%define baseversion %{rversion}.6
-%define patchlevel 7
-%define release %mkrel 2
+%define rversion 0.8
+%define baseversion %{rversion}.0
+%define patchlevel 0
+%define release %mkrel 1
 
 %define bversion %(echo %{baseversion} | sed -e 's/\\.//g')
 %if %{patchlevel}
