@@ -1,31 +1,19 @@
 %define gamename openarena
-%define name %{gamename}-data
-%define rversion 0.8
-%define baseversion %{rversion}.1
-%define patchlevel 5
-%define release %mkrel 2
+%define bversion 081
+%define baseversion 0.8.1
 
-%define bversion %(echo %{baseversion} | sed -e 's/\\.//g')
-%if %{patchlevel}
-%define patchversion %{rversion}.%{patchlevel}
-%define pversion %(echo %{patchversion} | sed -e 's/\\.//g')
-%endif
-%define version %{?patchversion}%{!?patchversion:%{baseversion}}
-
-Summary: An open-source content package for Quake III Arena
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: http://openarena.ws/rel/%{bversion}/oa%{bversion}.zip
-%if %{patchlevel}
-Source1: oa%{pversion}-patch.zip
-%endif
-License: Creative Commons
-Group: Games/Arcade
-Url: http://openarena.ws/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildArch: noarch
-Conflicts: openarena <= 0.7.0-2%{distsuffix}%{mandriva_release}
+Name:		%{gamename}-data
+Summary:	An open-source content package for Quake III Arena
+Version:	0.8.8
+Release:	%mkrel 1
+Source0:	http://openarena.ws/rel/%{bversion}/oa%{bversion}.zip
+Source1:	oa085-patch.zip
+Source2:	oa088-patch.zip
+License:	Creative Commons
+Group:		Games/Arcade
+Url:		http://openarena.ws/
+BuildArch:	noarch
+Conflicts:	openarena <= 0.7.0-2%{distsuffix}%{mandriva_release}
 
 %description
 OpenArena is an open-source content package for Quake III Arena
@@ -37,19 +25,18 @@ This package contains data files for OpenArena.
 %prep
 %setup -q -n %{gamename}-%{baseversion}
 chmod 644 CHANGES CREDITS README
-%if %{patchlevel}
 yes | unzip -qq -d .. %{SOURCE1}
-%endif
+yes | unzip -qq -d .. %{SOURCE2}
 
 %build
 
 %install
-rm -rf %{buildroot}
-install -d %{buildroot}%{_gamesdatadir}/%{gamename}/baseoa
-install -m644 baseoa/* %{buildroot}%{_gamesdatadir}/%{gamename}/baseoa
+%__rm -rf %{buildroot}
+%__install -d %{buildroot}%{_gamesdatadir}/%{gamename}/baseoa
+%__install -m644 baseoa/* %{buildroot}%{_gamesdatadir}/%{gamename}/baseoa
 
 %clean
-rm -rf %{buildroot}
+%__rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
