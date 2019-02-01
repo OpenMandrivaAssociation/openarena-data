@@ -5,7 +5,7 @@
 Name:		%{gamename}-data
 Summary:	An open-source content package for Quake III Arena
 Version:	0.8.8
-Release:	3
+Release:	4
 Source0:	http://openarena.ws/rel/%{bversion}/oa%{bversion}.zip
 Source1:	oa085-patch.zip
 Source2:	oa088-patch.zip
