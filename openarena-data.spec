@@ -11,7 +11,7 @@ Source1:	oa085-patch.zip
 Source2:	oa088-patch.zip
 License:	Creative Commons
 Group:		Games/Arcade
-Url:		http://openarena.ws/
+Url:		https://openarena.ws/
 BuildArch:	noarch
 
 %description
